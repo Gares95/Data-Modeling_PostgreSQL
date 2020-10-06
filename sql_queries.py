@@ -125,6 +125,12 @@ ON CONFLICT (start_time) DO NOTHING;
 # FIND SONGS
 
 song_select = ("""
+SELECT songs.song_id, 
+songs.artist_id 
+FROM songs  
+JOIN artists  
+ON artists.artist_id = songs.artist_id  
+WHERE songs.title = %s AND artists.name = %s AND songs.duration =  %s;
 """)
 
 # QUERY LISTS
