@@ -6,6 +6,17 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    
+    """
+    This procedure processes a song file whose filepath has been provided as an arugment.
+    It extracts the song information in order to store it into the songs table.
+    Then it extracts the artist information in order to store it into the artists table.
+
+    INPUTS:
+    * cur the cursor variable
+    * filepath the file path to the song file
+    """
+    
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -19,6 +30,23 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    
+    """
+    This function access a log file located in the directory which filepath is 
+    passed as an argument and extract from it time information to later insert 
+    them into the time table. Additionaly this function process the timestamp 
+    information obtained from the log files to convert it into datetime format 
+    before inserting it in the time table. 
+    It also extracts information for the songplay table and also access the song 
+    table and the artist table (by using the query "song_select" defined in 
+    sql_queries.py) to obtain the userId and the artistId before insterting it 
+    in the songplay table.
+
+    INPUTS:
+    * cur the cursor variable
+    * filepath the file path to the song file
+    """
+    
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -32,6 +60,7 @@ def process_log_file(cur, filepath):
 	th = (t.dt.time, t.dt.hour, t.dt.day,  t.dt.week, t.dt.month,  t.dt.year, t.dt.weekday)
 
     time_data = list(th)
+	
     column_labels = ('start_time', 'hour', 'day', 'week', 'month', 'year', 'weekday')
     time_df = pd.DataFrame(time_data, index = column_labels).T
 
@@ -49,7 +78,7 @@ def process_log_file(cur, filepath):
     for index, row in df.iterrows():
         
         # get songid and artistid from song and artist tables
-        results = cur.execute(song_select, (row.song, row.artist, row.length))
+        cur.execute(song_select, (row.song, row.artist, row.length))
         results = cur.fetchone()
         
         if results:
@@ -63,6 +92,18 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    
+    """
+    This function obtains all the files located in the filepath inserted as an argument
+    and they are processed one by one using the function also passed as an argument.
+    
+    INPUTS:
+    * cur the cursor variable
+    * conn the connection with the database
+    * filepath the file path to the song file
+    * func the function that it's going to be use on the file/s
+    """
+    
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
