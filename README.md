@@ -1,13 +1,8 @@
 # Data Modeling with Postgres
 ***
-This project will include the files to create and define tables for a database with  
-a star schema by data modeling with postgres. It also contains files to build an ETL pipeline which will allow the client to access and analyze the information that they have been collecting.  
-The transformation of this data (extracted by JSON logs that the clients  
-have been collecting over some time) will allow them to **analyze** and to  
-**extract new relevant information** which can help their decision-making  
-process on future options regarding marketing, store availability...  
-Having this information available with queries is a powerful tool that will  
-give the client plenty of flexibility.
+This project will include the files to create and define tables for a database with a star schema by data modeling with postgres. It also contains files to build an ETL pipeline which will allow the client to access and analyze the information that they have been collecting.  
+The transformation of this data (extracted by JSON logs that the clients have been collecting over some time) will allow them to **analyze** and to **extract new relevant information** which can help their decision-making process on future options regarding marketing, store availability... 
+Having this information available with queries is a powerful tool that will give the client plenty of flexibility.
 
 ### Credits
 Udacity provided the template and the guidelines to start this project.
