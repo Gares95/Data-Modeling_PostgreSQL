@@ -4,10 +4,6 @@ This project will include the files to create and define tables for a database w
 The transformation of this data (extracted by JSON logs that the clients have been collecting over some time) will allow them to **analyze** and to **extract new relevant information** which can help their decision-making process on future options regarding marketing, store availability... 
 Having this information available with queries is a powerful tool that will give the client plenty of flexibility.
 
-### Credits
-Udacity provided the template and the guidelines to start this project.
-The completion of this was made by Guillermo Garcia and the review of the program and the verification that the project followed the proper procedures was also made by my mentor from udacity.
-
 # Data Files
 ***
 ### Song Dataset
@@ -38,26 +34,16 @@ The star schema that is going to be created using this program will have the nex
 ***
 ## create_tables.py
 
-This file creates the connection to the default database and in addition  
-creates and connects to the sparkify database where our tables will contain  
-the processed information by the ETL Pipeline which will allow us to query the  
-information easily to analyze it.  
+This file creates the connection to the default database and in addition creates and connects to the sparkify database where our tables will contain the processed information by the ETL Pipeline which will allow us to query the information easily to analyze it (That's why before executing etl.py file you must use this to make the connection and create the tables).  
 
 ## sql_queries.py
 
-These files contains the functions imported by the file <em>create_tables.py</em>  
-which will allow to <em>Drop</em> old tables and <em>Create</em> new ones to  
-and also, to <em>Insert</em> data into them.  
-It also includes a function (<em>song_select</em>) for the <em>songplays table</em>  
-to find the <em>userid</em> and the <em>songid</em> for specific songs.  
+These files contains the functions imported by the file <em>create_tables.py</em> which will allow to <em>Drop</em> old tables and <em>Create</em> new ones to and also, to <em>Insert</em> data into them.  
+It also includes a function (<em>song_select</em>) for the <em>songplays table</em> to find the <em>userid</em> and the <em>songid</em> for specific songs.  
 
 ## etl.ipynb
 
-With this code we will perform the first connection to the databes and we'll  
-test the functions previously mentioned to see if we can insert data in the  
-tables without getting errors or if we get the desired outcome without  
-unexpected results. For that we wil process a single file from <em>song_data</em>  
-and <em>log_data</em> to load them into our tables.
+With this code we will perform the first connection to the databes and we'll test the functions previously mentioned to see if we can insert data in the tables without getting errors or if we get the desired outcome without unexpected results. For that we wil process a single file from <em>song_data</em> and <em>log_data</em> to load them into our tables.
 
 ## etl.py
 
@@ -65,8 +51,7 @@ With this file we will process all files from <em>song_data</em> and <em>log_dat
 
 ## test.ipynb
 
-This file will allow us to test our results and to check if all the connections  
-and insertions where performed correctly.
+This file will allow us to test our results and to check if all the connections and insertions where performed correctly.
 
 Some examples:
 >In case I want to test how many songs in the "songplay list" do we have in our "song list"  
@@ -84,3 +69,7 @@ Some examples:
 >If we want to know which songs are from the year 2008  
 >%sql SELECT * FROM songs WHERE year = '2008';
 
+
+### Credits
+Udacity provided the template and the guidelines to start this project.
+The completion of this was made by Guillermo Garcia and the review of the program and the verification that the project followed the proper procedures was also made by my mentor from udacity.
